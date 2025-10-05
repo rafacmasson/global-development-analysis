@@ -3,6 +3,61 @@ List of Countries by Cluster
 
 --- CLUSTER 0 ---
 
+- Afghanistan
+- Angola
+- Benin
+- Burkina Faso
+- Burundi
+- Cameroon
+- Central African Republic
+- Chad
+- Comoros
+- Congo, Dem. Rep.
+- Congo, Rep.
+- Cote d'Ivoire
+- Djibouti
+- Equatorial Guinea
+- Eritrea
+- Ethiopia
+- Gambia, The
+- Guinea
+- Guinea-Bissau
+- Haiti
+- Kenya
+- Kiribati
+- Lesotho
+- Liberia
+- Madagascar
+- Malawi
+- Mali
+- Mauritania
+- Micronesia, Fed. Sts.
+- Mozambique
+- Myanmar
+- Namibia
+- Niger
+- Nigeria
+- Pakistan
+- Papua New Guinea
+- Rwanda
+- Senegal
+- Sierra Leone
+- Solomon Islands
+- Somalia
+- South Sudan
+- Sudan
+- Syrian Arab Republic
+- Tanzania
+- Togo
+- Uganda
+- Vanuatu
+- Yemen, Rep.
+- Zambia
+- Zimbabwe
+
+
+--- CLUSTER 1 ---
+
 - Albania
 - Algeria
 - Antigua and Barbuda
@@ -19,6 +74,7 @@ List of Countries by Cluster
 - Botswana
 - Brazil
 - British Virgin Islands
+- Brunei Darussalam
 - Cabo Verde
 - Cambodia
 - China
@@ -45,9 +101,9 @@ List of Countries by Cluster
 - Jamaica
 - Jordan
 - Kazakhstan
-- Kiribati
 - Korea, Dem. People's Rep.
 - Kosovo
+- Kuwait
 - Kyrgyz Republic
 - Lao PDR
 - Lebanon
@@ -57,11 +113,9 @@ List of Countries by Cluster
 - Marshall Islands
 - Mauritius
 - Mexico
-- Micronesia, Fed. Sts.
 - Moldova
 - Mongolia
 - Morocco
-- Namibia
 - Nauru
 - Nepal
 - Nicaragua
@@ -100,7 +154,7 @@ List of Countries by Cluster
 - West Bank and Gaza
 
 
---- CLUSTER 1 ---
+--- CLUSTER 2 ---
 
 - American Samoa
 - Andorra
@@ -111,7 +165,6 @@ List of Countries by Cluster
 - Barbados
 - Belgium
 - Bermuda
-- Brunei Darussalam
 - Bulgaria
 - Canada
 - Cayman Islands
@@ -142,7 +195,6 @@ List of Countries by Cluster
 - Italy
 - Japan
 - Korea, Rep.
-- Kuwait
 - Latvia
 - Liechtenstein
 - Lithuania
@@ -176,57 +228,5 @@ List of Countries by Cluster
 - United States
 - Uruguay
 - Virgin Islands (U.S.)
-
-
---- CLUSTER 2 ---
-
-- Afghanistan
-- Angola
-- Benin
-- Burkina Faso
-- Burundi
-- Cameroon
-- Central African Republic
-- Chad
-- Comoros
-- Congo, Dem. Rep.
-- Congo, Rep.
-- Cote d'Ivoire
-- Djibouti
-- Equatorial Guinea
-- Eritrea
-- Ethiopia
-- Gambia, The
-- Guinea
-- Guinea-Bissau
-- Haiti
-- Kenya
-- Lesotho
-- Liberia
-- Madagascar
-- Malawi
-- Mali
-- Mauritania
-- Mozambique
-- Myanmar
-- Niger
-- Nigeria
-- Pakistan
-- Papua New Guinea
-- Rwanda
-- Senegal
-- Sierra Leone
-- Solomon Islands
-- Somalia
-- South Sudan
-- Sudan
-- Syrian Arab Republic
-- Tanzania
-- Togo
-- Uganda
-- Vanuatu
-- Yemen, Rep.
-- Zambia
-- Zimbabwe
 
 
