@@ -1,9 +1,0 @@
-pandas
-numpy
-plotly
-scikit-learn
-hdbscan
-seaborn
-matplotlib
-streamlit>=1.30.0
-altair<5
