@@ -10,17 +10,17 @@ This repository is dedicated to exploring global socioeconomic data to uncover p
 
 ## Current Projects
 
-### 1. WDI 2022: A Snapshot of Global Development
+### 1. WDI 2022: Global Development & Predictive Modeling
 
-This project provides a comprehensive analysis of the world in the year 2022. The workflow involves:
-* **Data Processing:** Downloading, cleaning, and preprocessing the complete WDI dataset to create a focused and analysis-ready dataset for 2022.
-* **Unsupervised Learning:** Applying K-Means and HDBSCAN clustering algorithms to group countries based on their development profiles.
-* **Analysis:** Interpreting the resulting clusters to understand the different tiers of socioeconomic development across the globe.
-* **Interactive Dashboard:** A Streamlit web application to dynamically explore the cluster distributions and profiles.
+This project provides a comprehensive analysis and machine learning workflow on global development in 2022:
+* **Data Processing:** Downloading, cleaning, and preprocessing the complete WDI dataset to create a focused, 16-indicator analysis-ready dataset for 2022.
+* **Unsupervised Learning:** Grouping countries using K-Means and HDBSCAN clustering algorithms to uncover organic development groups.
+* **Supervised Learning (ML):** 
+    * **Life Expectancy Prediction (Regression):** An optimized Random Forest Regressor ($R^2 = 0.82$, MAE = 2.56 years) predicting longevity based on socioeconomic factors, compared with regularized Lasso/Ridge linear regressions.
+    * **Development Tier Classification:** An optimized Random Forest Classifier (95.45% accuracy) and simplified Decision Tree (95.45% accuracy) predicting a country's development cluster.
+* **Interactive Dashboard & Simulator:** A Streamlit web application featuring a **Real-Time Predictive Simulator** that runs live machine learning predictions and overlays them against actual development tiers using gauge and comparison bar charts.
 
-Future work will expand this project to include other machine learning tasks based on this same dataset.
-
-**[Click here to explore the WDI 2022 project in detail.](./WDI-2022/)** | **[View Interactive Dashboard](https://wdi-global-clusters.streamlit.app/)**
+**[Explore the WDI 2022 project in detail](./WDI-2022/)** | **[View Interactive Dashboard](https://wdi-global-clusters.streamlit.app/)**
 
 ---
 
@@ -28,9 +28,6 @@ Future work will expand this project to include other machine learning tasks bas
 
 This repository is an ongoing effort. Future projects and enhancements planned include:
 
--   **Supervised Learning:** Building predictive models, such as:
-    -   A regression model to predict a country's life expectancy based on other socioeconomic factors.
-    -   A classification model to categorize countries into development tiers.
 -   **Time-Series Analysis:** Expanding the analysis to cover the evolution of key indicators (e.g., GDP per capita, life expectancy) from 2000 to the present, identifying which countries have shown the most significant progress.
 -   **Feature Enrichment:** Expanding the analysis by incorporating diverse external datasets, including unstructured data sources from fields like Computer Vision and Natural Language Processing (NLP).
 
@@ -39,7 +36,7 @@ This repository is an ongoing effort. Future projects and enhancements planned i
 ## Tech Stack
 
 * **Language:** Python
-* **Libraries:** Pandas, NumPy, Scikit-learn, Plotly, Seaborn, Matplotlib
+* **Libraries:** Pandas, NumPy, Scikit-learn, Plotly, Seaborn, Matplotlib, Joblib, Streamlit
 * **Environment:** Jupyter Notebook
 
 ---

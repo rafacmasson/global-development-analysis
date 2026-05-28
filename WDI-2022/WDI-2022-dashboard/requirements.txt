@@ -3,3 +3,5 @@ pandas
 plotly
 altair<5
 matplotlib
+scikit-learn
+joblib

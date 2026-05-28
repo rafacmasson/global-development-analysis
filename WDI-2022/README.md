@@ -1,6 +1,6 @@
 # WDI 2022: Analysis of Global Development Indicators
 
-This project folder contains all the file related to the analysis of the WDI2022.csv dataset, generated on a snapshot of the **World Development Indicators (WDI)** for the year **2022**. It currently contains the data processing and clustering notebooks and will be expanded to include all future tasks, such as predictive modeling and exploratory analyses, related to this same dataset.
+This project folder contains all the files related to the analysis of the `WDI2022.csv` dataset, generated on a snapshot of the **World Development Indicators (WDI)** for the year **2022**. It encompasses data processing, unsupervised clustering, supervised classification & regression models, and an interactive, real-time prediction dashboard.
 
 ---
 
@@ -9,43 +9,75 @@ This project folder contains all the file related to the analysis of the WDI2022
 This directory is organized into the following components:
 
 * **`WDI-2022-data-processing/`**:
-    * This folder contains the initial data engineering phase.
-    * `WDI-2022-data-processing.ipynb`: The Jupyter Notebook responsible for downloading the raw WDI dataset, selecting relevant indicators, cleaning the data, handling missing values through removal and imputation, and performing manual corrections.
-    * `countries_missing_values_map.html`: An interactive choropleth map visualizing the number of missing indicators per country before imputation.
+    * Contains the initial data engineering phase.
+    * `WDI-2022-data-processing.ipynb`: Jupyter Notebook responsible for downloading the raw WDI dataset, selecting 16 core indicators, handling missing data (removal and KNN Imputation), and manual corrections.
+    * `countries_missing_values_map.html`: Interactive choropleth map visualizing missing indicators per country before imputation.
         * **[View Interactive Map](https://htmlpreview.github.io/?https://github.com/rafacmasson/global-development-analysis/blob/main/WDI-2022/WDI-2022-data-processing/countries_missing_values_map.html)**
 
 * **`WDI-2022-clustering/`**:
-    * This folder contains the machine learning and analysis phase.
-    * `WDI-2022-clustering.ipynb`: This notebook loads the cleaned dataset (`WDI2022.csv`), scales the features, and applies two clustering algorithms: K-Means and HDBSCAN. It includes model optimization, profile analysis, and visualization of the results.
-    * `WDI2022_clusters.csv`: The resulting dataset containing the original indicators along with the assigned cluster labels for each country, used as input for the interactive dashboard.
+    * Contains the unsupervised machine learning phase.
+    * `WDI-2022-clustering.ipynb`: Scales the indicators and applies K-Means (K=3 chosen via Elbow & Silhouette methods) and HDBSCAN to group countries.
+    * `WDI2022_clusters.csv`: The resulting dataset containing original indicators along with assigned cluster labels for each country.
+
+* **`WDI-2022-classification/`**:
+    * Contains the supervised development tier classification.
+    * `WDI-2022-cluster-profiling.ipynb`: Trains and optimizes classification models to predict a country's development cluster.
+        * **Methodology:** Stratified 5-Fold Cross-Validation, GridSearchCV hyperparameter tuning, and Feature Importance analysis.
+        * **Models:** Optimized Random Forest Classifier (**95.45% accuracy** on test set) and a highly interpretable Decision Tree (**95.45% accuracy**, `max_depth=3`).
+
+* **`WDI-2022-regression/`**:
+    * Contains the supervised life expectancy prediction models.
+    * `WDI-2022-life-expectancy-prediction.ipynb`: Predicts longevity based on socioeconomic and infrastructure indicators.
+        * **Methodology:** 5-Fold Cross-Validation, Feature Importance, and comparison between non-linear and scaled/regularized linear models.
+        * **Models:** Optimized Random Forest Regressor (**$R^2 = 0.8201$**, **MAE = 2.56 years**), Lasso Regression ($R^2 = 0.7877$), and Ridge Regression ($R^2 = 0.7915$).
 
 * **`WDI-2022-dashboard/`**:
-    * Contains the source code for the interactive web application built with Streamlit.
-    * `app.py`: The main script for the dashboard.
-    * `requirements.txt`: Lightweight list of dependencies specific to the dashboard for seamless deployment.
+    * Contains the source code for the interactive Streamlit dashboard.
+    * `app.py`: Main dashboard script, powered by injected custom styles, real-time predictions, Plotly Gauge charts for predicted life expectancy, and comparison bar charts.
+    * `models/`: Stores serialized Random Forest models (`rf_classifier.joblib`, `rf_regressor.joblib`) and `feature_columns.joblib` for on-the-fly predictions.
+    * `requirements.txt`: Complete dependencies list (including `scikit-learn` and `joblib`).
     * **[View Interactive Dashboard](https://wdi-global-clusters.streamlit.app/)**
 
 * **`WDI2022.csv`**:
-    * The final, processed dataset generated by the data processing notebook. This file serves as the input for the clustering analysis. It contains data for 16 selected indicators for the year 2022, with missing values handled.
+    * The final processed dataset generated by the data processing notebook containing 16 key indicators for the year 2022 across 217 countries/regions.
 
 ---
 
-## Methodology
+## Supervised ML Model Summary
 
-1.  **Data Processing:** The raw data from the World Bank was filtered to focus on 16 key indicators for the year 2022. Countries with excessive missing data were removed, and remaining gaps were filled using KNN imputation, followed by critical manual adjustments for specific countries.
-2.  **Clustering & Analysis:** The processed data was scaled using `StandardScaler`. The optimal number of clusters for K-Means was determined to be 3 using the Elbow Method and Silhouette Analysis. HDBSCAN was also applied to provide a density-based perspective and identify outliers. The resulting clusters from both methods were then analyzed and compared.
+### Classification (Predicting Development Tiers)
+* **Target:** `Cluster_KMeans` (Tier 0: Lower, Tier 1: Medium, Tier 2: High development)
+* **Top Predictors:** `corruption_perception_estimate`, `access_to_electricity_percent`, `co2_emissions_per_capita`, `mobile_cellular_subscriptions_per_100_people`.
+* **Performance:** Random Forest and Decision Tree classifiers both achieved **95.45% accuracy**, demonstrating distinct development barriers.
+
+### Regression (Predicting Life Expectancy)
+* **Target:** `life_expectancy_at_birth`
+* **Exclusion:** `child_mortality_rate` was excluded to prevent colinearity and force models to rely on structural socioeconomic indicators.
+* **Top Predictors:** `gdp_per_capita_usd`, `fertility_rate_total`, `access_to_electricity_percent`, `population_65_plus_percent`.
+* **Performance Comparison:**
+    * **Random Forest Regressor (Tuned):** $R^2 = 0.8201$ | MAE = 2.56 years | RMSE = 3.20 years
+    * **Lasso Regression:** $R^2 = 0.7877$ | MAE = 2.76 years | RMSE = 3.47 years
+    * **Ridge Regression:** $R^2 = 0.7915$ | MAE = 2.71 years | RMSE = 3.44 years
+
+---
 
 ## How to Run
 
-1.  Clone the repository.
-2.  Navigate to the `WDI-2022` directory.
-3.  It is recommended to create a virtual environment.
-4.  Install the required libraries to run the notebooks: `pip install -r requirements.txt`.
-5.  Run the notebooks in the following order (optional, if you want to reproduce the analysis):
-    1.  `WDI-2022-data-processing/WDI-2022-data-processing.ipynb`
-    2.  `WDI-2022-clustering/WDI-2022-clustering.ipynb`
-6.  To run the interactive dashboard locally:
-    1. Navigate to the dashboard directory: `cd WDI-2022-dashboard`
-    2. Install the lightweight dependencies: `pip install -r requirements.txt`
-    3. Run the app: `streamlit run app.py`
-    *(Alternatively, you can just view the deployed version [here](https://wdi-global-clusters.streamlit.app/).)*
+1. Clone the repository.
+2. Navigate to the `WDI-2022` directory.
+3. Create a virtual environment and activate it:
+   ```bash
+   python -m venv venv
+   source venv/Scripts/activate  # On Windows
+   ```
+4. Install all requirements to run notebooks and dashboard:
+   ```bash
+   pip install -r requirements.txt
+   ```
+5. To run the interactive dashboard locally:
+   ```bash
+   cd WDI-2022-dashboard
+   pip install -r requirements.txt
+   streamlit run app.py
+   ```
+   *(Alternatively, view the live deployed dashboard [here](https://wdi-global-clusters.streamlit.app/).)*
